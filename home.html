@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohan Badsha </title>
+  <style>
+    /* Global Styles */
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --surface-muted: #f1f5f9;
+      --skill-bg: #eff6ff;
+      --radius: 12px;
+      --max-width: 800px;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --primary: #60a5fa;
+      --primary-hover: #3b82f6;
+      --bg: #111827;
+      --card-bg: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #a1aab8;
+      --border: #374151;
+      --surface-muted: #273449;
+      --skill-bg: #263b58;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .avatar{
+      border-radius: 2%;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0 40px;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 8px 12px;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+      background: var(--surface-muted);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 0 60px;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid var(--card-bg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      background-color: var(--card-bg);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--surface-muted);
+    }
+
+    /* Section Styles */
+    section {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    /* Skills Badges */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: var(--skill-bg);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Projects / Cards */
+    .project-card {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-card:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .project-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact & Social Links */
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 14px;
+      background: var(--surface-muted);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      background: var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      nav ul {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Navbar -->
+    <nav>
+      <a href="#" class="logo">MyPortfolio</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <img class="avatar" src="../../Pictures/unnamed.jpg" height="200" width="200" />
+      <h1>Hello, I'm Mohan Badsha</h1>
+      <p>I am a passionate [your profession or student status, e.g., Web Developer & Student] who loves building modern solutions.</p>
+      <div class="btn-group">
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="#" class="btn btn-outline">Download Resume</a>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a passionate web developer and student who loves building modern solutions.
+      </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills & Tools</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">Video Editing</span>
+        <span class="skill-tag">Gaming</span>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out if you'd like to collaborate or just have a chat!</p>
+      <p style="margin-top: 10px;"><strong>Email:</strong> <a href="mailto:mohanbadsha707@gmail.com" style="color: var(--primary);">mohanpersonal@gmail.com</a></p>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/mohan_vyy?psln=MW5ma2wyZGxlYXdnMg==" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@mohan_vyy?_r=1&_t=ZS-9Aluiu5S5AN" target="_blank">TikTok</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2026 [Your Name]. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    function setTheme(theme) {
+      const isDark = theme === 'dark';
+      document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+      themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+      themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+    }
+
+    setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', nextTheme);
+      setTheme(nextTheme);
+    });
+  </script>
+
+</body>
+</html>
